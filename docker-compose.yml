@@ -1,0 +1,41 @@
+###############################################################################
+#                          Generated on phpdocker.io                          #
+###############################################################################
+version: "3.1"
+services:
+
+    mariadb:
+      image: mariadb:10.1
+      container_name: docker_codeigniter_lemp-mariadb
+      working_dir: /application
+      volumes:
+        - .:/application
+      environment:
+        - MYSQL_ROOT_PASSWORD=welcome1
+        - MYSQL_DATABASE=docker_codeigniter_lemp
+        - MYSQL_USER=docker_codeigniter_lemp
+        - MYSQL_PASSWORD=welcome1
+      ports:
+        - "8077:3306"
+
+    webserver:
+      image: nginx:alpine
+      container_name: docker_codeigniter_lemp-webserver
+      working_dir: /application
+      volumes:
+          - .:/application
+          - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      ports:
+       - "8074:80"
+
+    php-fpm:
+      build: phpdocker/php-fpm
+      container_name: docker_codeigniter_lemp-php-fpm
+      working_dir: /application
+      volumes:
+        - .:/application
+        - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.0/fpm/conf.d/99-overrides.ini
+      environment:
+        XDEBUG_CONFIG: "remote_host=172.18.0.1"
+        PHP_IDE_CONFIG: "serverName=Projectname"
+
