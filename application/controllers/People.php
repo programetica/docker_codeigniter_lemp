@@ -13,10 +13,6 @@ class People extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // @TODO change shading in rows CSS in odd rows to indicate when a row is selected.
-        // @TODO change alias "rez_inventory" to something applicable after prototyping.
-        // @TODO clean up subforms for adding/editing new records, especially sizes.  These have become wonky due to the new header style sheets.
-        // @TODO fix issue with "Logged in as...  statement not showing logout dropdown.
 
         $this->load->library('session');
 
