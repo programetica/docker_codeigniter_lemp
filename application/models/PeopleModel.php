@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class PeopleModel extends CI_Model
 {
-    // Test
+
 	// Notice that column_search items are individually quoted, unlike Codeigniter's query builder select statement.
 	// Always use all upper case, just as with Query Builder.
 	var $table = array('docker_codeigniter_lemp.PEOPLE');
@@ -23,23 +23,23 @@ class PeopleModel extends CI_Model
 		//$this->output->enable_profiler(TRUE);
 
 	}
-	
-	    // Put all your default where clause query stuff here.  It will get called and reset
-    public function set_where_clause()
-    {
-        $this->db->distinct();
-        /*$this->db->join('SCOTT.EMPLOYEE E', 'E.EMPNO = PP.EMPNO');
-        $this->db->join('PROJECT P', 'P.PROJECTNO = PP.PROJECTNO'); */
-       // $this->db->where('E.JOB = \'SALESMAN\'');
 
-    }
+	// Put all your default where clause query stuff here.  It will get called and reset
+	public function set_where_clause()
+	{
+		$this->db->distinct();
+		/*$this->db->join('SCOTT.EMPLOYEE E', 'E.EMPNO = PP.EMPNO');
+        $this->db->join('PROJECT P', 'P.PROJECTNO = PP.PROJECTNO'); */
+		// $this->db->where('E.JOB = \'SALESMAN\'');
+
+	}
 
 	private function _get_datatables_query()
 	{
 		$this->db->select($this->column_search);
-		
+
 		$this->db->from($this->table);
-		
+
 		$this->set_where_clause();
 
 		// Limit returns for faster testing.
