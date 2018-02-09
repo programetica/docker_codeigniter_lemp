@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class PeopleModel extends CI_Model
 {
-
+    // Test
 	// Notice that column_search items are individually quoted, unlike Codeigniter's query builder select statement.
 	// Always use all upper case, just as with Query Builder.
 	var $table = array('docker_codeigniter_lemp.PEOPLE');
